@@ -16,6 +16,11 @@
 		61CF955C2A8948DA00DAE635 /* CameraTokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF955B2A8948DA00DAE635 /* CameraTokTests.swift */; };
 		61CF95662A8948DA00DAE635 /* CameraTokUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95652A8948DA00DAE635 /* CameraTokUITests.swift */; };
 		61CF95682A8948DA00DAE635 /* CameraTokUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95672A8948DA00DAE635 /* CameraTokUITestsLaunchTests.swift */; };
+		61CF95802A894A1300DAE635 /* VideoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF957F2A894A1300DAE635 /* VideoTests.swift */; };
+		61CF95822A894A5900DAE635 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95812A894A5900DAE635 /* Video.swift */; };
+		61CF958B2A89530800DAE635 /* GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF958A2A89530800DAE635 /* GalleryTests.swift */; };
+		61CF958D2A89542800DAE635 /* GalleryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF958C2A89542800DAE635 /* GalleryProvider.swift */; };
+		61CF958F2A8955E400DAE635 /* output.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61CF958E2A8955D500DAE635 /* output.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		61CF95612A8948DA00DAE635 /* CameraTokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraTokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		61CF95652A8948DA00DAE635 /* CameraTokUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokUITests.swift; sourceTree = "<group>"; };
 		61CF95672A8948DA00DAE635 /* CameraTokUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		61CF957F2A894A1300DAE635 /* VideoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTests.swift; sourceTree = "<group>"; };
+		61CF95812A894A5900DAE635 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		61CF958A2A89530800DAE635 /* GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTests.swift; sourceTree = "<group>"; };
+		61CF958C2A89542800DAE635 /* GalleryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryProvider.swift; sourceTree = "<group>"; };
+		61CF958E2A8955D500DAE635 /* output.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = output.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,8 @@
 		61CF955A2A8948DA00DAE635 /* CameraTokTests */ = {
 			isa = PBXGroup;
 			children = (
+				61CF95892A8952F300DAE635 /* App */,
+				61CF95832A894E6D00DAE635 /* Resources */,
 				61CF955B2A8948DA00DAE635 /* CameraTokTests.swift */,
 			);
 			path = CameraTokTests;
@@ -143,6 +155,7 @@
 		61CF95752A8948E700DAE635 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61CF95812A894A5900DAE635 /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +201,7 @@
 		61CF957B2A89492A00DAE635 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				61CF958C2A89542800DAE635 /* GalleryProvider.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -197,6 +211,39 @@
 			children = (
 			);
 			path = Reel;
+			sourceTree = "<group>";
+		};
+		61CF957E2A8949FF00DAE635 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61CF957F2A894A1300DAE635 /* VideoTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		61CF95832A894E6D00DAE635 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				61CF958E2A8955D500DAE635 /* output.mp4 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		61CF95862A8952BE00DAE635 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				61CF958A2A89530800DAE635 /* GalleryTests.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		61CF95892A8952F300DAE635 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				61CF95862A8952BE00DAE635 /* Features */,
+				61CF957E2A8949FF00DAE635 /* Models */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61CF958F2A8955E400DAE635 /* output.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +379,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				61CF95492A8948D600DAE635 /* ViewController.swift in Sources */,
+				61CF95822A894A5900DAE635 /* Video.swift in Sources */,
+				61CF958D2A89542800DAE635 /* GalleryProvider.swift in Sources */,
 				61CF95452A8948D600DAE635 /* AppDelegate.swift in Sources */,
 				61CF95472A8948D600DAE635 /* SceneDelegate.swift in Sources */,
 			);
@@ -341,6 +391,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				61CF955C2A8948DA00DAE635 /* CameraTokTests.swift in Sources */,
+				61CF95802A894A1300DAE635 /* VideoTests.swift in Sources */,
+				61CF958B2A89530800DAE635 /* GalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +626,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -594,7 +646,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -613,6 +665,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -631,6 +684,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
