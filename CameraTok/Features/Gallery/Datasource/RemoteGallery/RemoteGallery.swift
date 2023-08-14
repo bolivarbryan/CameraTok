@@ -16,7 +16,7 @@ struct RemoteGalleryImplementation: RemoteGallery {
         return []
     }
     
-    func fetchVideos(from date: Date, completion: @escaping ([Video]) -> Void) {
+    func fetchVideos(from date: Date, count: Int = 15, completion: @escaping ([Video]) -> Void) {
         requestVideoGalleryAccess { granted in
             if granted {
                 self.fetchVideos(date: date) { assets in
@@ -34,7 +34,7 @@ struct RemoteGalleryImplementation: RemoteGallery {
                             video.previewImage = image
                             videos.append(video)
                             assetLoadCount += 1
-                            if assetLoadCount == 15 {
+                            if assetLoadCount == count {
                                 completion(videos)
                             }
                         }
@@ -64,6 +64,19 @@ struct RemoteGalleryImplementation: RemoteGallery {
             completion(true)
         @unknown default:
             completion(false)
+        }
+    }
+    
+    func fetchVideo(for video: Video, completion: @escaping (AVAsset) -> Void) {
+        let options = PHVideoRequestOptions()
+        options.deliveryMode = .fastFormat
+        options.isNetworkAccessAllowed = true
+        PHImageManager.default().requestAVAsset(forVideo: video.asset, options: options) { avAsset, _, _ in
+            guard let avAsset = avAsset else {
+                return
+            }
+            print(avAsset)
+            completion(avAsset)
         }
     }
     

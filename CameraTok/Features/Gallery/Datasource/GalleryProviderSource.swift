@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import AVFoundation
 
 protocol GalleryProviderSource {
-    func fetchVideos(from date: Date, completion: @escaping ([Video]) -> Void) 
+    func fetchVideos(from date: Date, count: Int, completion: @escaping ([Video]) -> Void)
+    func fetchVideo(for video: Video, completion: @escaping (AVAsset) -> Void)
 }

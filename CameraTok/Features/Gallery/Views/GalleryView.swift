@@ -11,8 +11,8 @@ struct GalleryView: View {
     @StateObject private var viewModel: GalleryViewModel
     @State private var isShowingCalendarPicker = false
     
-    init(source: GalleryProviderSource) {
-        _viewModel = StateObject(wrappedValue: GalleryViewModel(source: source))
+    init(viewModel: GalleryViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -22,12 +22,17 @@ struct GalleryView: View {
                     ScrollView {
                         LazyVGrid(columns: [.init(.adaptive(minimum: UIScreen.main.bounds.width/3, maximum: .infinity), spacing: 0)], spacing: 0) {
                             ForEach(viewModel.videos) { video in
-                                GalleryThumbnail(video: video)
-                                    .onAppear {
-                                        if video == viewModel.lastVideo {
-                                            loadMoreVideosIfNeeded()
+                                Button(action: {
+                                    viewModel.selectVideo(video)
+                                }, label: {
+                                    GalleryThumbnail(video: video)
+                                        .onAppear {
+                                            if video == viewModel.lastVideo {
+                                                loadMoreVideosIfNeeded()
+                                            }
                                         }
-                                    }
+                                })
+             
                             }
                         }
                         .onAppear {

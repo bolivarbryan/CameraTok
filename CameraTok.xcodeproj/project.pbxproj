@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61CF13302A8A2A4E0074B98A /* ReelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF132F2A8A2A4E0074B98A /* ReelViewController.swift */; };
+		61CF13332A8A2FF90074B98A /* ReelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF13322A8A2FF90074B98A /* ReelViewModel.swift */; };
+		61CF13352A8A77EB0074B98A /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF13342A8A77EB0074B98A /* ReelView.swift */; };
+		61CF13362A8A7E860074B98A /* output.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61CF958E2A8955D500DAE635 /* output.mp4 */; };
 		61CF95452A8948D600DAE635 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95442A8948D600DAE635 /* AppDelegate.swift */; };
 		61CF95472A8948D600DAE635 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95462A8948D600DAE635 /* SceneDelegate.swift */; };
 		61CF95492A8948D600DAE635 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95482A8948D600DAE635 /* ViewController.swift */; };
@@ -46,6 +50,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		61CF132F2A8A2A4E0074B98A /* ReelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelViewController.swift; sourceTree = "<group>"; };
+		61CF13322A8A2FF90074B98A /* ReelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelViewModel.swift; sourceTree = "<group>"; };
+		61CF13342A8A77EB0074B98A /* ReelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
 		61CF95412A8948D600DAE635 /* CameraTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61CF95442A8948D600DAE635 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61CF95462A8948D600DAE635 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61CF13312A8A2FE10074B98A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61CF95982A89D47D00DAE635 /* GalleryView.swift */,
+				61CF959A2A89D4B100DAE635 /* GalleryThumbnail.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		61CF95382A8948D600DAE635 = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +227,9 @@
 		61CF957B2A89492A00DAE635 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
+				61CF13312A8A2FE10074B98A /* Views */,
 				61CF95972A89CF4F00DAE635 /* Datasource */,
 				61CF95902A89679300DAE635 /* GalleryViewModel.swift */,
-				61CF95982A89D47D00DAE635 /* GalleryView.swift */,
-				61CF959A2A89D4B100DAE635 /* GalleryThumbnail.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -222,6 +237,9 @@
 		61CF957C2A89493800DAE635 /* Reel */ = {
 			isa = PBXGroup;
 			children = (
+				61CF132F2A8A2A4E0074B98A /* ReelViewController.swift */,
+				61CF13322A8A2FF90074B98A /* ReelViewModel.swift */,
+				61CF13342A8A77EB0074B98A /* ReelView.swift */,
 			);
 			path = Reel;
 			sourceTree = "<group>";
@@ -383,6 +401,7 @@
 			files = (
 				61CF95512A8948D900DAE635 /* LaunchScreen.storyboard in Resources */,
 				61CF954E2A8948D900DAE635 /* Assets.xcassets in Resources */,
+				61CF13362A8A7E860074B98A /* output.mp4 in Resources */,
 				61CF954C2A8948D600DAE635 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,9 +430,12 @@
 			files = (
 				61CF95492A8948D600DAE635 /* ViewController.swift in Sources */,
 				61CF959B2A89D4B100DAE635 /* GalleryThumbnail.swift in Sources */,
+				61CF13302A8A2A4E0074B98A /* ReelViewController.swift in Sources */,
 				61CF95912A89679300DAE635 /* GalleryViewModel.swift in Sources */,
 				61CF95962A89CF3000DAE635 /* GalleryProviderSource.swift in Sources */,
 				61CF95942A89CF1C00DAE635 /* RemoteGallery.swift in Sources */,
+				61CF13332A8A2FF90074B98A /* ReelViewModel.swift in Sources */,
+				61CF13352A8A77EB0074B98A /* ReelView.swift in Sources */,
 				61CF95822A894A5900DAE635 /* Video.swift in Sources */,
 				61CF958D2A89542800DAE635 /* GalleryProvider.swift in Sources */,
 				61CF95452A8948D600DAE635 /* AppDelegate.swift in Sources */,

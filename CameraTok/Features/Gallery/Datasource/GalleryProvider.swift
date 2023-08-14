@@ -15,9 +15,15 @@ class GalleryProvider {
         self.source = source
     }
     
-    func fetchVideos(from date: Date, completion: @escaping ([Video]) -> Void) {
-        source.fetchVideos(from: date) { videos in
+    func fetchVideos(from date: Date, count: Int = 15, completion: @escaping ([Video]) -> Void) {
+        source.fetchVideos(from: date, count: count) { videos in
             completion(videos)
+        }
+    }
+    
+    func fetchVideo(for video: Video, completion: @escaping (AVAsset) -> Void) {
+        source.fetchVideo(for: video) { videoAsset in
+            completion(videoAsset)
         }
     }
     

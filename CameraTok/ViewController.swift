@@ -8,16 +8,17 @@
 import UIKit
 import SwiftUI
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GalleryViewModelDelegate {
     let viewModel = GalleryViewModel(source: RemoteGalleryImplementation())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addGalleryToView()
+        viewModel.delegate = self
     }
     
     func addGalleryToView() {
-        let galleryView = GalleryView(source: RemoteGalleryImplementation())
+        let galleryView = GalleryView(viewModel: viewModel)
         let galleryVC = UIHostingController(rootView: galleryView)
         addChild(galleryVC)
         view.addSubview(galleryVC.view)
@@ -29,8 +30,17 @@ class ViewController: UIViewController {
         galleryVC.didMove(toParent: self)
     }
     
-    func presentCalendarPicker() {
-        
+    func didSelectVideo(_ video: Video, index: Int) {
+        let reelViewModel = ReelViewModel(videos: viewModel.videos,
+                                          currentPage: index,
+                                          source: viewModel.source)
+        let reelVC = ReelViewController(viewModel: reelViewModel)
+        reelVC.modalPresentationStyle = .overFullScreen
+        reelViewModel.fetchVideoAsset {
+            DispatchQueue.main.async {
+                self.present(reelVC, animated: true)
+            }
+        }
     }
 }
 

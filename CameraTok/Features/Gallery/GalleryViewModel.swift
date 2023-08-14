@@ -8,9 +8,14 @@
 import Foundation
 import SwiftUI
 
+protocol GalleryViewModelDelegate {
+    func didSelectVideo(_ video: Video, index: Int)
+}
+
 class GalleryViewModel: ObservableObject {
-    var currentPage: Int = 1
     var source: GalleryProviderSource
+    var delegate: GalleryViewModelDelegate?
+    
     @Published var videos: [Video] = []
     @Published var selectedDate = Date() {
         didSet {
@@ -31,20 +36,24 @@ class GalleryViewModel: ObservableObject {
         guard let date = videos.last?.date else {
             return
         }
-        currentPage += 1
         
         let provider = GalleryProvider(source: source)
-        provider.fetchVideos(from: date) { galleryVideos in
+        provider.fetchVideos(from: date, count: 15) { galleryVideos in
             self.videos.append(contentsOf: galleryVideos)
         }
     }
     
     func fetchLastVideos() {
         let provider = GalleryProvider(source: source)
-        provider.fetchVideos(from: selectedDate) { galleryVideos in
+        provider.fetchVideos(from: selectedDate, count: 15) { galleryVideos in
             self.videos = galleryVideos.sorted(by: { lhs, rhs in
                 lhs.date >= rhs.date
             })
         }
+    }
+    
+    func selectVideo(_ video: Video) {
+        let index = videos.firstIndex(of: video) ?? 0
+        self.delegate?.didSelectVideo(video, index: index)
     }
 }

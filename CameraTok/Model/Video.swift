@@ -32,7 +32,6 @@ class Video: Equatable, Identifiable, Hashable {
         self.metadata = asset.description
         self.asset = asset
     }
-    
 
     static func == (lhs: Video, rhs: Video) -> Bool {
         return lhs.asset == rhs.asset
