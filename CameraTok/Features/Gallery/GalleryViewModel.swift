@@ -12,6 +12,12 @@ class GalleryViewModel: ObservableObject {
     var currentPage: Int = 1
     var source: GalleryProviderSource
     @Published var videos: [Video] = []
+    @Published var selectedDate = Date() {
+        didSet {
+            videos = []
+            fetchLastVideos()
+        }
+    }
     
     var lastVideo: Video? {
         return videos.last
@@ -35,8 +41,10 @@ class GalleryViewModel: ObservableObject {
     
     func fetchLastVideos() {
         let provider = GalleryProvider(source: source)
-        provider.fetchVideos(from: Date()) { galleryVideos in
-            self.videos = galleryVideos
+        provider.fetchVideos(from: selectedDate) { galleryVideos in
+            self.videos = galleryVideos.sorted(by: { lhs, rhs in
+                lhs.date >= rhs.date
+            })
         }
     }
 }
