@@ -21,6 +21,11 @@
 		61CF958B2A89530800DAE635 /* GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF958A2A89530800DAE635 /* GalleryTests.swift */; };
 		61CF958D2A89542800DAE635 /* GalleryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF958C2A89542800DAE635 /* GalleryProvider.swift */; };
 		61CF958F2A8955E400DAE635 /* output.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 61CF958E2A8955D500DAE635 /* output.mp4 */; };
+		61CF95912A89679300DAE635 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95902A89679300DAE635 /* GalleryViewModel.swift */; };
+		61CF95942A89CF1C00DAE635 /* RemoteGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95932A89CF1C00DAE635 /* RemoteGallery.swift */; };
+		61CF95962A89CF3000DAE635 /* GalleryProviderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95952A89CF3000DAE635 /* GalleryProviderSource.swift */; };
+		61CF95992A89D47D00DAE635 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF95982A89D47D00DAE635 /* GalleryView.swift */; };
+		61CF959B2A89D4B100DAE635 /* GalleryThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF959A2A89D4B100DAE635 /* GalleryThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +64,11 @@
 		61CF958A2A89530800DAE635 /* GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTests.swift; sourceTree = "<group>"; };
 		61CF958C2A89542800DAE635 /* GalleryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryProvider.swift; sourceTree = "<group>"; };
 		61CF958E2A8955D500DAE635 /* output.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = output.mp4; sourceTree = "<group>"; };
+		61CF95902A89679300DAE635 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		61CF95932A89CF1C00DAE635 /* RemoteGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteGallery.swift; sourceTree = "<group>"; };
+		61CF95952A89CF3000DAE635 /* GalleryProviderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryProviderSource.swift; sourceTree = "<group>"; };
+		61CF95982A89D47D00DAE635 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		61CF959A2A89D4B100DAE635 /* GalleryThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +211,10 @@
 		61CF957B2A89492A00DAE635 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				61CF958C2A89542800DAE635 /* GalleryProvider.swift */,
+				61CF95972A89CF4F00DAE635 /* Datasource */,
+				61CF95902A89679300DAE635 /* GalleryViewModel.swift */,
+				61CF95982A89D47D00DAE635 /* GalleryView.swift */,
+				61CF959A2A89D4B100DAE635 /* GalleryThumbnail.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -244,6 +257,24 @@
 				61CF957E2A8949FF00DAE635 /* Models */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		61CF95922A89CEFD00DAE635 /* RemoteGallery */ = {
+			isa = PBXGroup;
+			children = (
+				61CF95932A89CF1C00DAE635 /* RemoteGallery.swift */,
+			);
+			path = RemoteGallery;
+			sourceTree = "<group>";
+		};
+		61CF95972A89CF4F00DAE635 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				61CF958C2A89542800DAE635 /* GalleryProvider.swift */,
+				61CF95952A89CF3000DAE635 /* GalleryProviderSource.swift */,
+				61CF95922A89CEFD00DAE635 /* RemoteGallery */,
+			);
+			path = Datasource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,9 +410,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				61CF95492A8948D600DAE635 /* ViewController.swift in Sources */,
+				61CF959B2A89D4B100DAE635 /* GalleryThumbnail.swift in Sources */,
+				61CF95912A89679300DAE635 /* GalleryViewModel.swift in Sources */,
+				61CF95962A89CF3000DAE635 /* GalleryProviderSource.swift in Sources */,
+				61CF95942A89CF1C00DAE635 /* RemoteGallery.swift in Sources */,
 				61CF95822A894A5900DAE635 /* Video.swift in Sources */,
 				61CF958D2A89542800DAE635 /* GalleryProvider.swift in Sources */,
 				61CF95452A8948D600DAE635 /* AppDelegate.swift in Sources */,
+				61CF95992A89D47D00DAE635 /* GalleryView.swift in Sources */,
 				61CF95472A8948D600DAE635 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +605,7 @@
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CameraTok/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Help you to organize your gallery in a nicer way!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -598,6 +635,7 @@
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CameraTok/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Help you to organize your gallery in a nicer way!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -626,6 +664,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Help you to organize your gallery in a nicer way!";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokTests;
@@ -646,6 +685,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = K87XPR878Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Help you to organize your gallery in a nicer way!";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.CameraTokTests;

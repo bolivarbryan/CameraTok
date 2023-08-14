@@ -8,28 +8,33 @@
 import Foundation
 import UIKit
 import AVFoundation
+import Photos
 
-struct Video {
-    var date: Date
-    var metadata: String
-    var asset: AVAsset
-    
-    var previewImage: UIImage? {
-        let imageGenerator = AVAssetImageGenerator(asset: asset)
-        imageGenerator.appliesPreferredTrackTransform = true
-        
-        do {
-            let cgImage = try imageGenerator.copyCGImage(at: .zero, actualTime: nil)
-            return UIImage(cgImage: cgImage)
-        } catch {
-            return nil
-        }
+class Video: Equatable, Identifiable, Hashable {
+    var hashValue: Int {
+        return id.hashValue
     }
     
-    init(date: Date = Date(), metadata: String = "", asset: AVAsset) {
+    var id = UUID()
+    var date: Date
+    var metadata: String
+    var asset: PHAsset
+    var previewImage: UIImage?
+    
+    init(date: Date = Date(), metadata: String = "", asset: PHAsset) {
         self.date = date
         self.metadata = metadata
         self.asset = asset
     }
     
+    init(from asset: PHAsset) {
+        self.date = asset.creationDate ?? Date()
+        self.metadata = asset.description
+        self.asset = asset
+    }
+    
+
+    static func == (lhs: Video, rhs: Video) -> Bool {
+        return lhs.asset == rhs.asset
+    }
 }
