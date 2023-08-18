@@ -34,7 +34,7 @@ struct RemoteGalleryImplementation: RemoteGallery {
                             video.previewImage = image
                             videos.append(video)
                             assetLoadCount += 1
-                            if assetLoadCount == count {
+                            if assetLoadCount == assets.count {
                                 completion(videos)
                             }
                         }

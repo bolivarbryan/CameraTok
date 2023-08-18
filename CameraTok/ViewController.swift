@@ -34,13 +34,6 @@ class ViewController: UIViewController, GalleryViewModelDelegate {
         let reelViewModel = ReelViewModel(videos: viewModel.videos,
                                           currentPage: index,
                                           source: viewModel.source)
-        let reelVC = ReelViewController(viewModel: reelViewModel)
-        reelVC.modalPresentationStyle = .overFullScreen
-        reelViewModel.fetchVideoAsset {
-            DispatchQueue.main.async {
-                self.present(reelVC, animated: true)
-            }
-        }
     }
 }
 

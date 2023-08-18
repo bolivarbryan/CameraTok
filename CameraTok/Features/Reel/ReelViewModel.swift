@@ -12,7 +12,6 @@ class ReelViewModel: ObservableObject {
     var currentPage: Int = 1
     var source: GalleryProviderSource
     @Published var videos: [Video] = []
-    @Published var videoAsset: AVAsset
     
     var currentVideo: Video? {
         guard videos.count > currentPage else {
@@ -25,10 +24,6 @@ class ReelViewModel: ObservableObject {
         self.source = source
         self.videos = videos
         self.currentPage = currentPage
-        
-        let testBundle = Bundle(for: type(of: self))
-        let videoURL = testBundle.url(forResource: "output", withExtension: "mp4")
-        videoAsset = AVAsset(url: videoURL!)
     }
     
     func moveNextPage() {
@@ -43,15 +38,4 @@ class ReelViewModel: ObservableObject {
             currentPage -= 1
         }
     }
-    
-    func fetchVideoAsset(completion: @escaping () -> Void) {
-        guard let video = currentVideo else {
-            return
-        }
-        source.fetchVideo(for: video) { asset in
-            self.videoAsset = asset
-            completion()
-        }
-    }
-     
 }

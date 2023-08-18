@@ -7,23 +7,30 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 protocol GalleryViewModelDelegate {
     func didSelectVideo(_ video: Video, index: Int)
 }
 
 class GalleryViewModel: ObservableObject {
+    enum Mode {
+        case gallery
+        case reel
+    }
+    
     var source: GalleryProviderSource
     var delegate: GalleryViewModelDelegate?
     
     @Published var videos: [Video] = []
+    @Published var mode: Mode = .gallery
     @Published var selectedDate = Date() {
         didSet {
             videos = []
             fetchLastVideos()
         }
     }
-    
+
     var lastVideo: Video? {
         return videos.last
     }
@@ -52,8 +59,9 @@ class GalleryViewModel: ObservableObject {
         }
     }
     
-    func selectVideo(_ video: Video) {
-        let index = videos.firstIndex(of: video) ?? 0
+    func selectVideo(_ video: Video) {    
+        let index = self.videos.firstIndex(of: video) ?? 0
         self.delegate?.didSelectVideo(video, index: index)
+        mode = .reel
     }
 }

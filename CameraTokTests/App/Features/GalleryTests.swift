@@ -9,36 +9,6 @@ import XCTest
 import AVFoundation
 @testable import CameraTok
 
-protocol LocalGallery: GalleryProviderSource { }
-
-class LocalGalleryImplementation: LocalGallery {
-    func fetchVideos(from date: Date, completion: @escaping ([CameraTok.Video]) -> Void) {
-        
-    }
-    
-    var videoAsset: AVAsset {
-        let testBundle = Bundle(for: type(of: self))
-        let videoURL = testBundle.url(forResource: "output", withExtension: "mp4")
-        return AVAsset(url: videoURL!)
-    }
-    
-    func fetchVideos(from date: Date) -> [Video] {
-        return (1...40).map {
-            return Video(date: Date(timeIntervalSinceNow: TimeInterval($0 * 100)), asset: videoAsset)
-        }
-    }
-}
-
-class EmptyGalleryImplementation: LocalGallery {
-    func fetchVideos(from date: Date, completion: @escaping ([CameraTok.Video]) -> Void) {
-        completion([])
-    }
-    
-    func fetchVideos(from date: Date) -> [Video] {
-        return []
-    }
-}
-
 final class GalleryTests: XCTestCase {
     var videoAsset: AVAsset {
         let testBundle = Bundle(for: type(of: self))

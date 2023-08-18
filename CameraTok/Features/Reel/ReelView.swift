@@ -10,98 +10,102 @@ import AVFoundation
 import AVKit
 import Photos
 
-/*
 struct ReelView: View {
-    @StateObject private var viewModel: ReelViewModel
-    
-    init(viewModel: ReelViewModel) {
+    @StateObject private var viewModel: GalleryViewModel
+    @State private var liked = false
+
+    init(viewModel: GalleryViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
-        VStack {
-            ScrollViewReader { scrollViewProxy in
-                ScrollView {
-                    LazyVGrid(columns: [.init(.adaptive(minimum: UIScreen.main.bounds.width, maximum: .infinity), spacing: 0)], spacing: 0) {
-                        ForEach(viewModel.videos) { video in
-                            AVPlayerView(player: AVPlayer(playerItem: AVPlayerItem(asset: viewModel.videoAsset)))
-                                .frame(height: UIScreen.main.bounds.height)
-                                .onAppear() {
-                                    viewModel.fetchVideoAsset { }
-                                }
-                                .onDisappear() {
-                                    viewModel.videoAsset
-                                }
+        
+            ZStack {
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(height: UIScreen.main.bounds.height)
+                VStack {
+                    HStack {
+                        Button(action: {
+                            viewModel.mode = .gallery
+                        }, label: {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .frame(width: 15, height: 15)
+                                .padding()
+                                .foregroundColor(.black)
+                                .background(Circle().foregroundColor(.gray))
+                        })
+
+                        Spacer()
+                    }
+                    .frame(height: 20)
+                    .padding(.top)
+                    
+                    Spacer()
+                   
+                    HStack(alignment: .bottom) {
+                        VStack {
+                            Spacer()
+                            Image(systemName: "speaker.slash.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding()
+                                .foregroundColor(.black)
+                                .background(Circle().foregroundColor(.gray))
+                        }
+                        Spacer()
+                        VStack {
+                            Spacer()
+                            Image(systemName: "hand.thumbsdown")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .padding()
+                                .foregroundColor(.black)
+                                .background(Circle().foregroundColor(.gray))
+                            
+                            Button {
+                                liked.toggle()
+                            } label: {
+                                Image(systemName: liked ? "heart.fill" : "heart")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .padding()
+                                    .foregroundColor(.black)
+                                    .background(Circle().foregroundColor(.gray))
+                                    .rotationEffect(Angle(degrees: liked ? 360 : 0))
+                            }
+
+
                         }
                     }
-                    .onAppear() {
-                        scrollViewProxy.scrollTo(viewModel.currentPage, anchor: .center)
-                    }
+                    .frame(height: 100)
+                    .padding(.bottom, 20)
                 }
-            }
-        }
-    }
-}
-*/
-
-struct ReelView: View {
-    @StateObject private var viewModel: ReelViewModel
-    
-    init(viewModel: ReelViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-    }
-    
-    var body: some View {
-        GeometryReader { geometry in
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 0) {
-                    ForEach(viewModel.videos) { asset in
-                        VideoPlayerView(asset: viewModel.videoAsset)
-                            .frame(height: UIScreen.main.bounds.height)
-
-                    }
-                }
-            }
-            .frame(width: geometry.size.width, height: geometry.size.height)
+                .padding(.vertical, 40)
+                .padding(.horizontal, 20)
         }
     }
 }
 
 struct VideoPlayerView: View {
-    let asset: AVAsset
+    @State var asset: AVAsset?
+    @State var video: Video
 
     var body: some View {
-        VideoPlayer(player: AVPlayer(playerItem: AVPlayerItem(asset: asset))) {
-            // You can customize the player controls and overlay here
-        }
-        .onAppear {
-            // Implement autoplay logic here if needed
-        }
-        .onDisappear {
-            // Implement pause or other actions when the view disappears if needed
+        if let asset = asset {
+            VideoPlayer(player: AVPlayer(playerItem: AVPlayerItem(asset: asset))) {
+                // You can customize the player controls and overlay here
+            }
+            .onAppear { }
+            .onDisappear {
+                // Implement pause or other actions when the view disappears if needed
+            }
+        } else {
+            EmptyView()
         }
     }
 }
-
-/*
-
-import SwiftUI
-import AVKit
-
-struct AVPlayerView: UIViewControllerRepresentable {
-
-    let player: AVPlayer
-
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        playerViewController.player?.play()
-        return playerViewController
-    }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-        
-    }
-    
-}
-*/

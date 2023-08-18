@@ -17,33 +17,58 @@ struct GalleryView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
-                VStack {
-                    ScrollView {
-                        LazyVGrid(columns: [.init(.adaptive(minimum: UIScreen.main.bounds.width/3, maximum: .infinity), spacing: 0)], spacing: 0) {
-                            ForEach(viewModel.videos) { video in
-                                Button(action: {
-                                    viewModel.selectVideo(video)
-                                }, label: {
-                                    GalleryThumbnail(video: video)
-                                        .onAppear {
-                                            if video == viewModel.lastVideo {
-                                                loadMoreVideosIfNeeded()
-                                            }
-                                        }
-                                })
-             
-                            }
-                        }
-                        .onAppear {
-                            viewModel.fetchLastVideos()
-                        }
+            switch viewModel.mode {
+            case .reel:
+                LazyVGrid(columns: [.init(.adaptive(minimum: UIScreen.main.bounds.width, maximum: .infinity), spacing: 0)], spacing: 0) {
+                    ForEach(viewModel.videos) { video in
+                        ReelView(viewModel: viewModel)
+                        /*
+                         Button(action: {
+                         viewModel.selectVideo(video)
+                         }, label: {
+                         GalleryThumbnail(video: video)
+                         .onAppear {
+                         if video == viewModel.lastVideo {
+                         loadMoreVideosIfNeeded()
+                         }
+                         }
+                         })
+                         */
+                        
                     }
                 }
-                .navigationBarTitle("CameraTok")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(trailing: DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
-                    .datePickerStyle(CompactDatePickerStyle()))
+                .onAppear {
+                    viewModel.fetchLastVideos()
+                }
+            case .gallery:
+                NavigationStack {
+                    VStack {
+                        ScrollView {
+                            LazyVGrid(columns: [.init(.adaptive(minimum: UIScreen.main.bounds.width/3, maximum: .infinity), spacing: 0)], spacing: 0) {
+                                ForEach(viewModel.videos) { video in
+                                    Button(action: {
+                                        viewModel.selectVideo(video)
+                                    }, label: {
+                                        GalleryThumbnail(video: video)
+                                            .onAppear {
+                                                if video == viewModel.lastVideo {
+                                                    loadMoreVideosIfNeeded()
+                                                }
+                                            }
+                                    })
+                                    
+                                }
+                            }
+                            .onAppear {
+                                viewModel.fetchLastVideos()
+                            }
+                        }
+                    }
+                    .navigationBarTitle("CameraTok")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(trailing: DatePicker("", selection: $viewModel.selectedDate, displayedComponents: .date)
+                        .datePickerStyle(CompactDatePickerStyle()))
+                }
             }
         }
     }
