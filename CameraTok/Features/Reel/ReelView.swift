@@ -12,14 +12,15 @@ import Photos
 
 struct ReelView: View {
     @StateObject private var viewModel: GalleryViewModel
-    @State private var liked = false
+    @State private var isLiked = false
+    @State private var isMuted = false
+    @State private var isAnimating = false
 
     init(viewModel: GalleryViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-        
             ZStack {
                 Rectangle()
                     .fill(Color.white)
@@ -47,14 +48,28 @@ struct ReelView: View {
                     HStack(alignment: .bottom) {
                         VStack {
                             Spacer()
-                            Image(systemName: "speaker.slash.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30, height: 30)
-                                .padding()
-                                .foregroundColor(.black)
-                                .background(Circle().foregroundColor(.gray))
+                 
+                            Button {
+                                isMuted.toggle()
+                            } label: {
+                                
+                                Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 30)
+                                    .padding()
+                                    .foregroundColor(.black)
+                                    .background(
+                                        Circle().foregroundColor(.gray)
+                                            .scaleEffect((isAnimating && !isMuted) ? 1.1 : 1.0)
+                                            .animation(.easeInOut.repeatForever(autoreverses: true), value: 0.1)
+                                    )
+                                
+                            }
                         }
+                        .onAppear {
+                                    startBeatAnimation()
+                                }
                         Spacer()
                         VStack {
                             Spacer()
@@ -67,19 +82,17 @@ struct ReelView: View {
                                 .background(Circle().foregroundColor(.gray))
                             
                             Button {
-                                liked.toggle()
+                                isLiked.toggle()
                             } label: {
-                                Image(systemName: liked ? "heart.fill" : "heart")
+                                Image(systemName: isLiked ? "heart.fill" : "heart")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 30, height: 30)
                                     .padding()
                                     .foregroundColor(.black)
                                     .background(Circle().foregroundColor(.gray))
-                                    .rotationEffect(Angle(degrees: liked ? 360 : 0))
+                                    .rotationEffect(Angle(degrees: isLiked ? 360 : 0))
                             }
-
-
                         }
                     }
                     .frame(height: 100)
@@ -88,6 +101,16 @@ struct ReelView: View {
                 .padding(.vertical, 40)
                 .padding(.horizontal, 20)
         }
+    }
+    
+    func startBeatAnimation() {
+        let beatInterval = 0.3
+        let timer = Timer.scheduledTimer(withTimeInterval: beatInterval, repeats: true) { _ in
+            withAnimation {
+                isAnimating.toggle()
+            }
+        }
+        timer.fire()
     }
 }
 

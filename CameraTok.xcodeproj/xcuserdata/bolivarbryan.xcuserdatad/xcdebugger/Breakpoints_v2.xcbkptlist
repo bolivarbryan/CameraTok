@@ -350,13 +350,13 @@
             filePath = "CameraTok/Features/Reel/ReelView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c2e1cc55eb94088c"
+                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c2e1cc55eb940b85"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -366,12 +366,12 @@
                   urlString = "file:///Users/bolivarbryan/Developer/CameraTok/CameraTok/Features/Reel/ReelView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "936">
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "492">
                </Location>
                <Location
-                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c2e1cc55eb94088c"
+                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c2e1cc55eb940b85"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -381,12 +381,12 @@
                   urlString = "file:///Users/bolivarbryan/Developer/CameraTok/CameraTok/Features/Reel/ReelView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
                   offsetFromSymbolStart = "580">
                </Location>
                <Location
-                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c025d04228d8cdff"
+                  uuid = "2969544D-1344-4174-A424-530ED8A3FAA0 - c025d04228d8cef6"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -396,8 +396,8 @@
                   urlString = "file:///Users/bolivarbryan/Developer/CameraTok/CameraTok/Features/Reel/ReelView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
